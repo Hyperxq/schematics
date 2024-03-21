@@ -1,0 +1,22 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "$id": "EmptyFolder",
+    "title": "Add a component",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "The name of the component.",
+            "$default": {
+                "$source": "argv",
+                "index": 0
+            },
+            "x-prompt": "What name would you like to use for the component?"
+        },
+        "addSlot": {
+            "type": "boolean",
+            "description": "Add the tag slot to the component",
+            "default": false
+        }
+    }
+}

@@ -1,5 +1,29 @@
 {
-  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
+    "layout": {
+      "description": "Allows to create astro layout",
+      "factory": "./builder-generate/layout/layout.factory#layoutFactory",
+      "schema": "./builder-generate/layout/schema.json",
+      "aliases": [
+        "l"
+      ]
+    },
+    "component": {
+      "description": "Allows to create astro component",
+      "factory": "./builder-generate/component/component.factory#componentFactory",
+      "schema": "./builder-generate/component/schema.json",
+      "aliases": [
+        "c"
+      ]
+    },
+    "page": {
+      "description": "",
+      "factory": "",
+      "schema": "",
+      "aliases": [
+        "p"
+      ]
+    }
   }
 }

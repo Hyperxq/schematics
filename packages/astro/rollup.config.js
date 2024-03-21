@@ -71,6 +71,7 @@ const baseExternal = [
   '@angular-devkit/schematics/tasks',
   '@angular-devkit/schematics-cli',
   '@angular-devkit/schematics',
+  '@angular-devkit/core',
   'winston',
   'winston-console-format'
 ];
