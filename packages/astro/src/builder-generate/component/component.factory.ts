@@ -11,10 +11,12 @@ import {
   MergeStrategy,
   Tree,
 } from '@angular-devkit/schematics';
+import { parseName } from '../../utils';
 
-// name, addSlot
 export function componentFactory({ name, addSlot }: { name: string; addSlot: boolean }): Rule {
   return (tree: Tree) => {
+    const { path, name: componentName } = parseName('./', name);
+
     let basePath = './src';
 
     if (!tree.getDir('/').subdirs.find((f) => f === 'src')) {
@@ -26,12 +28,12 @@ export function componentFactory({ name, addSlot }: { name: string; addSlot: boo
     const template = apply(url('./files'), [
       filter((path) => urlTemplates.some((urlTemplate) => path.includes(urlTemplate))),
       applyTemplates({
-        name,
+        name: componentName,
         addSlot,
         ...strings,
       }),
       renameTemplateFiles(),
-      move(basePath),
+      move(`${basePath}${path ?? ''}`),
     ]);
     return mergeWith(template, MergeStrategy.Overwrite);
   };

@@ -100,8 +100,8 @@ function addPageFile(
 
   const pageTypes = {
     astro: '__name@classify__.astro.template',
-    md: '__pageName@classify__.md.template',
-    mdx: '__pageName@classify__.mdx.template',
+    md: '__name@classify__.md.template',
+    mdx: '__name@classify__.mdx.template',
   };
 
   const urlTemplates = [pageTypes[fileType]];
@@ -115,7 +115,7 @@ function addPageFile(
       ...strings,
     }),
     renameTemplateFiles(),
-    move(`${basePath}${pagePath}`),
+    move(`${basePath}${pagePath ?? ''}`),
   ]);
   return mergeWith(template, MergeStrategy.Overwrite);
 }
