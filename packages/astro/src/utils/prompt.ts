@@ -24,11 +24,7 @@ export async function askConfirmation(message: string, defaultResponse: boolean)
   return answers['confirmation'];
 }
 
-export async function askQuestion(
-  message: string,
-  choices: ListChoiceOptions[],
-  defaultResponseIndex: number,
-): Promise<string | null> {
+export async function askQuestion<T>(message: string, choices: T[], defaultResponseIndex: T): Promise<T | null> {
   const question: ListQuestion = {
     type: 'list',
     name: 'answer',

@@ -18,9 +18,9 @@
       ]
     },
     "page": {
-      "description": "",
-      "factory": "",
-      "schema": "",
+      "description": "Allows to create astro page",
+      "factory": "./builder-generate/page/page.factory#pageFactory",
+      "schema": "./builder-generate/page/schema.json",
       "aliases": [
         "p"
       ]
