@@ -4,5 +4,3 @@ import <%= layoutName %> from '<%= relativeLayoutPath %>';
 <layoutName>
 </layoutName><% } else { %>---
 ---<% }%>
-
-
