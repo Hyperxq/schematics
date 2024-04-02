@@ -91,7 +91,6 @@ export default [
       ...basePlugins,
       cleaner({
         targets: ['./../../dist/astro/'],
-        silence: false,
       }),
       copy({
         targets: [

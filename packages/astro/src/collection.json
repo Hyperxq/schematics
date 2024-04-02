@@ -1,6 +1,14 @@
 {
   "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
+    "builder-add": {
+      "description": "Builder add for astro collection",
+      "factory": "./builder-add/builder-add.factory#addFactory",
+      "schema": "./builder-add/schema.json",
+      "aliases": [
+        "p"
+      ]
+    },
     "layout": {
       "description": "Allows to create astro layout",
       "factory": "./builder-generate/layout/layout.factory#layoutFactory",

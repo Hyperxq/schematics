@@ -6,7 +6,7 @@
     "build": "rollup -c --bundleConfigAsCjs",
     "test": "npm run build && jasmine src/**/*_spec.js",
     "format": "prettier --write .",
-    "build:watch": "rollup -c --bundleConfigAsCjs --watch",
+    "build:watch": "node watch-mode.js",
     "publish": "npm run build && cd ../../dist/angular && npm publish --access=public",
     "publish:verdaccio": "npm run build && cd ../../dist/angular && npm publish --registry http://localhost:4873"
   },

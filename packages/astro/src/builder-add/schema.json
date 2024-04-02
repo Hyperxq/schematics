@@ -1,0 +1,29 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "$id": "BuilderAdd",
+    "title": "Builder Add",
+    "type": "object",
+    "properties": {
+        "installCli": {
+            "type": "string",
+            "description": "Install the astro cli into the project",
+            "x-prompt": "Would you like to install the pastro CLI instead to use the generic schematic CLI?",
+            "default": false,
+            "aliases": [
+                "ic"
+            ]
+        },
+        "packageManager": {
+            "description": "The package manager used to install dependencies.",
+            "type": "string",
+            "enum": [
+                "npm",
+                "yarn",
+                "pnpm",
+                "cnpm",
+                "bun"
+            ],
+            "default": "npm"
+        }
+    }
+}
