@@ -11,7 +11,7 @@ import {
   MergeStrategy,
   Tree,
 } from '@angular-devkit/schematics';
-import { parseName } from '../../utils';
+import { parseName } from '../../../../../utils';
 
 // name, addSlot
 export function layoutFactory({ name }: { name: string }): Rule {

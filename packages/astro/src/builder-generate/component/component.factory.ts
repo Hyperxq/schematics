@@ -1,3 +1,4 @@
+import { parseName } from '../../../../../utils';
 import {
   Rule,
   apply,
@@ -11,7 +12,6 @@ import {
   MergeStrategy,
   Tree,
 } from '@angular-devkit/schematics';
-import { parseName } from '../../utils';
 
 export function componentFactory({ name, addSlot }: { name: string; addSlot: boolean }): Rule {
   return (tree: Tree) => {

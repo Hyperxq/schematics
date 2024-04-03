@@ -10,7 +10,7 @@ import {
   renameTemplateFiles,
   url,
 } from '@angular-devkit/schematics';
-import { logger, parseName } from '../../utils';
+import { logger, parseName } from '../../../../../utils';
 import { askLayout } from './page.questions';
 import { strings } from '@angular-devkit/schematics';
 
