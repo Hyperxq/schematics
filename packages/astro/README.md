@@ -1,28 +1,30 @@
 # Schematics for astro
 
-These schematics allow you to automate daily task as: Create components, layouts and pages.
+Astro Schematics streamlines your development workflow by automating routine tasks. Easily create components, layouts, and pages with our tools, supercharged by Project Builder.
 
-This schematics are powered by [Project Builder](https://schematics.pbuilder.dev/)
-
-We recommend to add this library to your astro project:
+To integrate this powerful toolkit into your Astro project, execute:
 
 ```sh
 npx @pbuilder/cli add @pbuilder/astro
 ```
 
-## Note
+## Important Notes
 
-You will notice that the previous command will tell you if you want to install a CLI, the reason is because the CLI will help you to create: components, layouts and pages easier than if you use the generic @pbuilder/cli  CLI.
+* **CLI Installation:** Running the command above might prompt you to install the CLI. This is highly recommended as the CLI significantly simplifies the creation process for components, layouts, and pages beyond the capabilities of the generic `@pbuilder/cli`.
 
-## Note 2
+* **Discoverability:** For detailed command options, append `--help` to learn about all the available parameters and flags.
 
-For any command that you want to know the allowed options you can use the flag: `--help`.
+## Quickstart Guides
 
-## Create components
+### Creating Components
+
+To generate a new component, use:
 
 ```sh
 pastro g c <component-name>
 ```
+
+Or, for a direct approach:
 
 ```sh
 npx @pbuilder/astro-cli g c <component-name>
@@ -30,9 +32,13 @@ npx @pbuilder/astro-cli g c <component-name>
 
 ## Create layouts
 
+Generate a new layout by running:
+
 ```sh
 pastro g l <layout-name>
 ```
+
+Alternatively:
 
 ```sh
 npx @pbuilder/astro-cli g l <layout-name>
@@ -40,23 +46,30 @@ npx @pbuilder/astro-cli g l <layout-name>
 
 ## Create Pages
 
+For page creation, specify the type and layout:
+
 ```sh
 pastro g p <page-name> --type [md, mdx, astro] --layout <layout file name>
 ```
+
+Or use the direct method:
 
 ```sh
 npx @pbuilder/astro-cli g p <page-name> --type [md, mdx, astro] --layout <layout file name>
 ```
 
-## Using schematics without the pastro cli
+## Beyond the CLI
 
-You can use the generic cli for schematics named `pbuilder`. The reason is because some schematics no matter the frameworks you can will use them in every Javascript envioriment.
+## Utilizing Generic Schematics
+
+For projects that don't directly utilize `pastro` CLI, the `pbuilder` CLI remains versatile across different JavaScript environments:
 
 ```sh
-npx @pbuilder/cli exec @pbuilder/astro <schematic-name(page, component, layout)> --name=<name> [options]
+npx @pbuilder/cli exec @pbuilder/astro <schematic-name> --name=<name> [options]
+
 ```
 
-For example:
+For instance, to create a component:
 
 ```sh
 npx @pbuilder/cli exec @pbuilder/astro c --name=MyComponent2
