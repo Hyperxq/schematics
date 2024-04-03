@@ -66,7 +66,6 @@ For projects that don't directly utilize `pastro` CLI, the `pbuilder` CLI remain
 
 ```sh
 npx @pbuilder/cli exec @pbuilder/astro <schematic-name> --name=<name> [options]
-
 ```
 
 For instance, to create a component:
