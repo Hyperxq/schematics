@@ -1,5 +1,5 @@
 import { Rule, noop } from '@angular-devkit/schematics';
-import { Spinner, logger, spawnAsync } from '../utils';
+import { logger, spawnAsync } from '../utils';
 
 export function addFactory({
   installCli,
