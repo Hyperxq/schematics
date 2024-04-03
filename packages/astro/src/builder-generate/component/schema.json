@@ -3,6 +3,7 @@
     "$id": "EmptyFolder",
     "title": "Add a component",
     "type": "object",
+    "additionalProperties": false,
     "properties": {
         "name": {
             "type": "string",

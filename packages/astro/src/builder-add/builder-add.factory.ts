@@ -1,21 +1,41 @@
-import { Rule, SchematicContext, Tree, noop } from '@angular-devkit/schematics';
-import { NodeDependencyType, addPackageJsonDependency, installDependencies } from '../utils';
+import { Rule, noop } from '@angular-devkit/schematics';
+import { Spinner, logger, spawnAsync } from '../utils';
 
-export function addFactory({ installCli, packageManager }: { installCli: boolean; packageManager: string }): Rule {
+export function addFactory({
+  installCli,
+  packageManager,
+}: {
+  installCli: boolean | string;
+  packageManager: string;
+}): Rule {
   return () => {
-    return installCli ? installCliDev(packageManager) : noop();
+    const shouldInstallCli = installCli === 'false' ? false : !!installCli;
+    return shouldInstallCli ? installCliDev(packageManager) : noop();
   };
 }
 
 function installCliDev(packageManager: string): Rule {
-  return (tree: Tree, context: SchematicContext) => {
-    addPackageJsonDependency(tree, {
-      type: NodeDependencyType.Dev,
-      name: '@pbuilder/astro-cli',
-      version: '1.0.0',
-      overwrite: true,
-    });
+  return async () => {
+    const packageManagerCommands = {
+      npm: 'install',
+      yarn: 'add',
+      pnpm: 'add',
+      cnpm: 'install',
+      bun: 'add',
+    };
 
-    return installDependencies(context, packageManager);
+    try {
+      await spawnAsync(
+        packageManager,
+        [packageManagerCommands[packageManager], `--save-dev --save-exact @pbuilder/astro-cli -g`],
+        {
+          cwd: process.cwd(),
+          stdio: 'inherit',
+          shell: true,
+        },
+      );
+    } catch (e) {
+      logger.error(e.message);
+    }
   };
 }

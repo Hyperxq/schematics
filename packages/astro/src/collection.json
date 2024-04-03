@@ -4,10 +4,7 @@
     "builder-add": {
       "description": "Builder add for astro collection",
       "factory": "./builder-add/builder-add.factory#addFactory",
-      "schema": "./builder-add/schema.json",
-      "aliases": [
-        "p"
-      ]
+      "schema": "./builder-add/schema.json"
     },
     "layout": {
       "description": "Allows to create astro layout",
@@ -30,7 +27,7 @@
       "factory": "./builder-generate/page/page.factory#pageFactory",
       "schema": "./builder-generate/page/schema.json",
       "aliases": [
-        "p"
+        "pg"
       ]
     }
   }

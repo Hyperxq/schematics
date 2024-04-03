@@ -1,6 +1,6 @@
 <% if(layoutName) { %>---
 import <%= layoutName %> from '<%= relativeLayoutPath %>';
 ---
-<layoutName>
-</layoutName><% } else { %>---
+<<%= layoutName %>>
+</<%= layoutName %>><% } else { %>---
 ---<% }%>

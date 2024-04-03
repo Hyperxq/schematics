@@ -7,7 +7,7 @@
         "installCli": {
             "type": "string",
             "description": "Install the astro cli into the project",
-            "x-prompt": "Would you like to install the pastro CLI instead to use the generic schematic CLI?",
+            "x-prompt": "Would you like to install the pastro CLI globally?",
             "default": false,
             "aliases": [
                 "ic"
