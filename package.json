@@ -5,10 +5,33 @@
   "scripts": {},
   "private": true,
   "dependencies": {},
+  "lint-staged": {
+    "*.{ts,js,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "devDependencies": {
     "@nx/js": "18.1.2",
     "@nx/workspace": "18.1.2",
-    "nx": "18.1.2"
+    "nx": "18.1.2",
+    "eslint": "8.56.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-config-lover": "2.1.0",
+    "eslint-plugin-header": "3.1.1",
+    "eslint-plugin-import": "2.29.1",
+    "eslint-plugin-n": "16.6.2",
+    "eslint-plugin-promise": "6.1.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.3.0",
+    "prettier": "3.2.5"
   },
-  "workspaces": ["packages/*"]
+  "workspaces": [
+    "packages/*"
+  ]
 }

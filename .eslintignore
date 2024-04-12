@@ -4,5 +4,5 @@ dist/
 **/logo.ts
 **/messages.ts
 commitlint.config.js
-rollup.config.js
+package/**/rollup.config.js
 tsconfig.json

@@ -1,7 +1,7 @@
 {
-  "name": "@pbuilder/astro",
+  "name": "@pbuilder/sm",
   "version": "1.1.7",
-  "description": "A set schematics for astro",
+  "description": "A set schematics to create schematics",
   "scripts": {
     "build": "rollup -c --bundleConfigAsCjs",
     "test": "npm run build && jasmine src/**/*_spec.js",
@@ -11,8 +11,7 @@
     "publish:verdaccio": "npm run build && cd ../../dist/astro && npm publish --registry http://localhost:4873"
   },
   "keywords": [
-    "schematics",
-    "astro"
+    "schematics"
   ],
   "author": "",
   "license": "MIT",

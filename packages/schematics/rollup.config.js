@@ -71,6 +71,7 @@ const baseExternal = [
   '@angular-devkit/schematics/tasks',
   '@angular-devkit/schematics-cli',
   '@angular-devkit/schematics',
+  '@angular-devkit/core',
   'winston',
   'winston-console-format'
 ];
@@ -80,7 +81,7 @@ export default [
     input: 'src/public_api.ts',
     output: [
       {
-        dir: '../../dist/angular',
+        dir: '../../dist/sm',
         format: 'cjs',
         preserveModules: true,
       },
@@ -89,14 +90,13 @@ export default [
     plugins: [
       ...basePlugins,
       cleaner({
-        targets: ['./../../dist/angular/'],
-        silence: false,
+        targets: ['../../dist/sm'],
       }),
       copy({
         targets: [
           {
             src: 'package.json',
-            dest: '../../dist/angular',
+            dest: '../../dist/sm',
             transform: (contents) => {
               const packageData = JSON.parse(contents.toString());
               delete packageData.scripts;
@@ -108,22 +108,22 @@ export default [
           },
           {
             src: 'README.md',
-            dest: '../../dist/angular',
+            dest: '../../dist/sm',
           },
           {
             src: 'src/collection.json',
-            dest: '../../dist/angular',
+            dest: '../../dist/sm',
           },
           {
             src: 'src/**/**/*.json',
-            dest: '../../dist/angular/',
+            dest: '../../dist/sm',
             rename: (name, extension, fullPath) => {
               return removeSrcPath(fullPath);
             },
           },
           {
             src: ['src/**/**/**/**/*.template', 'src/**/**/**/**/.*.template'],
-            dest: '../../dist/angular/',
+            dest: '../../dist/sm',
             rename: (name, extension, fullPath) => {
               return removeSrcPath(fullPath);
             },
@@ -136,7 +136,7 @@ export default [
   ...tsFilesSrc.map((file) => ({
     input: file,
     output: {
-      dir: `../../dist/angular/${removeSrcFileNamePath(file)}`,
+      dir: `../../dist/sm${removeSrcFileNamePath(file)}`,
       format: 'cjs',
       exports: 'auto',
     },
@@ -153,7 +153,7 @@ export default [
   ...tsFilesSrc.map((file) => ({
     input: file,
     output: {
-      dir: `../../dist/angular/${removeSrcFileNamePath(file)}`,
+      dir: `../../dist/sm${removeSrcFileNamePath(file)}`,
     },
     plugins: [dts()],
   })),
