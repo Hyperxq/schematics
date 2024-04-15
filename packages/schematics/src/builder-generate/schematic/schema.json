@@ -1,0 +1,42 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "$id": "EmptyFolder",
+    "title": "Add a page",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "The name of the page.",
+            "$default": {
+                "$source": "argv",
+                "index": 0
+            },
+            "x-prompt": "What name would you like to use for the page?"
+        },
+        "description": {
+            "type": "string",
+            "description": "A brief description of what the schematic does.",
+            "x-prompt": "Enter the description of the schematic?"
+        },
+        "skipSchema": {
+            "type": "boolean",
+            "description": "If true, skips the generation of a schema.",
+            "default": false
+        },
+        "collectionRoot": {
+            "type": "string",
+            "description": "The collection root path",
+            "default": "src"
+        },
+        "schematicsFolder": {
+            "type": "string",
+            "description": "The directory where the schematics are stored.",
+            "default": "builder-generate"
+        },
+        "title": {
+            "type": "string",
+            "description": "An optional title for the schema.json.",
+            "default": "a custom schematic"
+        }
+    }
+}

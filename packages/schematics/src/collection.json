@@ -1,4 +1,21 @@
 {
   "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
-  "schematics": {}
+  "schematics": {
+    "schematic": {
+      "description": "create a new schematic",
+      "factory": "./builder-generate/schematic/schematic.factory#schematicFactory",
+      "schema": "./builder-generate/schematic/schema.json",
+      "aliases": [
+        "sc"
+      ]
+    },
+    "add-builder-add": {
+      "description": "This schematic will add a schematic named: builder-add",
+      "factory": "./builder-generate/add-builder-add/add-builder-add.factory#addBuilderAddFactory",
+      "schema": "./builder-generate/add-builder-add/schema.json",
+      "aliases": [
+        "aba"
+      ]
+    }
+  }
 }

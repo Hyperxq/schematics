@@ -1,0 +1,7 @@
+import { Rule } from '@angular-devkit/schematics';
+
+export function builderAddFactory(): Rule {
+  return () => {
+    console.log('This schematics had executed after the installation');
+  };
+}

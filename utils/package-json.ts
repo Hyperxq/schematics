@@ -9,7 +9,7 @@ export function addElementToPackageJson(key: string, value: string | object): Ru
     }
 
     const packageJsonString = tree.read(packageJsonPath)?.toString('utf-8');
-    const packageJson = JSON.parse(packageJsonString);
+    const packageJson = JSON.parse(packageJsonString!);
 
     packageJson[key] = value;
 
@@ -27,7 +27,7 @@ export function addScriptToPackageJson(scriptName: string, scriptCommand: string
     }
     // Read the package.json file and parse its content
     const packageJsonString = tree.read(packageJsonPath)?.toString('utf-8');
-    const packageJson = JSON.parse(packageJsonString);
+    const packageJson = JSON.parse(packageJsonString!);
 
     if (!packageJson.scripts) {
       packageJson.scripts = {};

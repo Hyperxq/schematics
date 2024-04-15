@@ -1,24 +1,26 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var pluginNodeResolve = require('@rollup/plugin-node-resolve');
+var tsConfigPaths = require('rollup-plugin-tsconfig-paths');
+var alias = require('@rollup/plugin-alias');
+var glob = require('glob');
+var path = require('node:path');
+var url = require('url');
+var copy = require('rollup-plugin-copy');
+var cleaner = require('rollup-plugin-cleaner');
+var peerDepsExternal = require('rollup-plugin-peer-deps-external');
+var rollupPluginDts = require('rollup-plugin-dts');
+var swc = require('@rollup/plugin-swc');
+
 // import typescript from '@rollup/plugin-typescript';
-import { nodeResolve } from '@rollup/plugin-node-resolve';
-import tsConfigPaths from "rollup-plugin-tsconfig-paths";
-import alias from "@rollup/plugin-alias";
-
-import glob from 'glob';
-import path from 'node:path';
-import { fileURLToPath } from 'url';
-
-import copy from 'rollup-plugin-copy';
-import cleaner from 'rollup-plugin-cleaner';
-import peerDepsExternal from 'rollup-plugin-peer-deps-external';
-import { dts } from 'rollup-plugin-dts';
-
-import swc from '@rollup/plugin-swc';
 
 // Convert the import.meta.url to a file path
-const __filename = fileURLToPath(import.meta.url);
+const __filename$1 = url.fileURLToPath('file:///D:/Projects/Project-Builder%20Repos/schematics/packages/schematics/rollup.config.js');
 
 // Get the directory name from the file path
-const __dirname = path.dirname(__filename);
+const __dirname$1 = path.dirname(__filename$1);
 
 
 function getInputsFromGlob(pattern) {
@@ -43,7 +45,7 @@ const basePlugins = [
   // typescript({ outputToFilesystem: false }),
   tsConfigPaths(),
   peerDepsExternal(),
-  nodeResolve({ extensions: [".ts",".js", ".json"] }),
+  pluginNodeResolve.nodeResolve({ extensions: [".ts",".js", ".json"] }),
   swc({
     // SWC configuration
     include: /\.ts?$/,
@@ -58,7 +60,7 @@ const basePlugins = [
     module: {
       type: 'commonjs',
     },
-    tsconfig: path.resolve(__dirname, 'tsconfig.json'),
+    tsconfig: path.resolve(__dirname$1, 'tsconfig.json'),
   }),
 ];
 const baseExternal = [
@@ -76,7 +78,7 @@ const baseExternal = [
   'winston-console-format'
 ];
 
-export default [
+var rollup_config = [
   {
     input: 'src/public_api.ts',
     output: [
@@ -155,6 +157,8 @@ export default [
     output: {
       dir: `../../dist/sm/${removeSrcFileNamePath(file)}`,
     },
-    plugins: [dts()],
+    plugins: [rollupPluginDts.dts()],
   })),
 ];
+
+exports.default = rollup_config;
