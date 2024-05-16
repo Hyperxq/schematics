@@ -3,5 +3,11 @@
     "$id": "add-builder-add",
     "title": "a custom schematic ",
     "type": "object",
-    "properties": {}
+    "properties": {
+        "collectionRoot": {
+            "type": "string",
+            "description": "The collection root path",
+            "default": "src"
+        }
+    }
 }

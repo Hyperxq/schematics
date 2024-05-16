@@ -10,7 +10,7 @@
       ]
     },
     "add-builder-add": {
-      "description": "This schematic will add a schematic named: builder-add",
+      "description": "Add a schematic named: builder-add",
       "factory": "./builder-generate/add-builder-add/add-builder-add.factory#addBuilderAddFactory",
       "schema": "./builder-generate/add-builder-add/schema.json",
       "aliases": [

@@ -4,6 +4,7 @@ import {
   Tree,
   apply,
   applyTemplates,
+  branchAndMerge,
   chain,
   filter,
   mergeWith,
@@ -16,19 +17,20 @@ import {
 import { logger } from '../../../../../utils/logger';
 import { Schematic, SchematicCollection } from '../schematic/schematic.interfaces';
 
-export function addBuilderAddFactory({ collectionRoot = 'src' }: { collectionRoot: string }): Rule {
+export function addBuilderAddFactory({ collectionRoot }: { collectionRoot: string }): Rule {
   return (tree: Tree) => {
-    chain([addSchematicFiles(collectionRoot), modifyCollection(tree, collectionRoot)]);
+    return branchAndMerge(
+      chain([modifyCollection(tree, collectionRoot), addFiles(collectionRoot)]),
+      MergeStrategy.Overwrite,
+    );
   };
 }
 
-function addSchematicFiles(collectionPath: string) {
-  const urlTemplates = ['builder-add.factory.ts.template'];
+function addFiles(collectionPath: string) {
+  const urlTemplates = ['schema.json.template', 'builder-add.factory.ts.template'];
   const template = apply(url('./files'), [
     filter((path) => urlTemplates.some((urlTemplate) => path.includes(urlTemplate))),
-    applyTemplates({
-      ...strings,
-    }),
+    applyTemplates(strings),
     renameTemplateFiles(),
     move(`./${collectionPath}/builder-add`),
   ]);
