@@ -11,7 +11,7 @@
                 "$source": "argv",
                 "index": 0
             },
-            "x-prompt": "What name would you like to use for the page?"
+            "x-prompt": "What name would you like to use for the schematic?"
         },
         "description": {
             "type": "string",
