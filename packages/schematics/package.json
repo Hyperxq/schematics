@@ -1,6 +1,6 @@
 {
   "name": "@pbuilder/sm",
-  "version": "1.1.8",
+  "version": "1.2.1",
   "description": "A set schematics to create schematics",
   "scripts": {
     "build": "rollup -c --bundleConfigAsCjs",

@@ -1,7 +1,6 @@
 import {
   MergeStrategy,
   Rule,
-  SchematicContext,
   Tree,
   apply,
   applyTemplates,
@@ -15,7 +14,10 @@ import {
   strings,
   url,
 } from '@angular-devkit/schematics';
-import { NodeDependencyType, addPackageJsonDependency, installDependencies, logger } from '../../../../../utils';
+import { NodeDependencyType, addPackageJsonDependency } from '../../../../../utils';
+
+import * as fs from 'fs';
+import * as path from 'path';
 
 export function newFactory({
   name,
@@ -36,6 +38,7 @@ export function newFactory({
       schematic('schematics-library-bundler', { bundler }),
       schematic('add-utils', {}),
       addDependencies(),
+      addSmDependency(),
       schematic('prettier', {
         gitHooks: true,
         quoteProps: 'preserve',
@@ -94,6 +97,18 @@ function addFiles(options: { name: string; author: string; description: string }
   ]);
 }
 
+function addSmDependency() {
+  return (tree: Tree) => {
+    const version = getPackageVersion();
+    addPackageJsonDependency(tree, {
+      type: NodeDependencyType.Dev,
+      name: '@pbuilder/sm',
+      version: version,
+      overwrite: true,
+    });
+  };
+}
+
 function addDependencies() {
   return (tree: Tree) => {
     addPackageJsonDependency(tree, {
@@ -134,4 +149,10 @@ function addDependencies() {
       overwrite: true,
     });
   };
+}
+
+function getPackageVersion(): string {
+  const packageJsonPath = path.resolve(__dirname, '..', '..', 'package.json');
+  const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
+  return packageJson.version;
 }
