@@ -1,0 +1,38 @@
+{
+  "name": "<%= name %>",
+  "author": "<%= author %>",
+  "version": "0.0.0",
+  "description": "<%= description %>",
+  "scripts": {
+    "build": "rollup -c --bundleConfigAsCjs",
+    "test": "npm run build && jasmine src/**/*_spec.js",
+    "prepare": "husky install",
+    "format": "prettier --write .",
+    "build:watch": "rollup -c --bundleConfigAsCjs --watch",
+    "publish": "npm run build && cd dist && npm publish --access=public",
+    "publish:verdaccio": "npm run build && cd dist && npm publish --registry http://localhost:4873"
+  },
+  "keywords": [
+    "schematics"
+  ],
+  "license": "MIT",
+  "schematics": "./collection.json",
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "lint-staged": {
+    "*.{ts,js,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "engines": {
+    "node": ">= 20"
+  }
+}

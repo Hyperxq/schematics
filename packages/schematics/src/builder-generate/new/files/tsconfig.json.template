@@ -6,7 +6,6 @@
     "target": "ES2021",
     "module": "CommonJS",
     "moduleResolution": "node",
-    "declaration": true,
     "removeComments": true,
     "sourceMap": false,
     "resolveJsonModule": true,
@@ -24,8 +23,6 @@
     "src"
   ],
   "exclude": [
-    "node_modules",
-    "packages/schematics/node_modules",
-    "packages/astro/node_modules"
+    "node_modules"
   ]
 }

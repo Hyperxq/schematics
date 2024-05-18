@@ -1,0 +1,36 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "$id": "new",
+    "title": "a custom schematic ",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "The name of the project",
+            "$default": {
+                "$source": "argv",
+                "index": 0
+            },
+            "x-prompt": "What name would you like to use for the project?"
+        },
+        "author": {
+            "type": "string",
+            "description": "The author of the project"
+        },
+        "description": {
+            "type": "string",
+            "description": "The description of the project",
+            "default": "A blank schematics"
+        },
+        "bundler": {
+            "type": "string",
+            "description": "The bundler to use for the project.",
+            "enum": [
+                "rollup",
+                "ts",
+                "ng-packagr"
+            ],
+            "default": "rollup"
+        }
+    }
+}

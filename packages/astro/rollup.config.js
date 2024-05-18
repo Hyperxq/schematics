@@ -90,7 +90,7 @@ export default [
     plugins: [
       ...basePlugins,
       cleaner({
-        targets: ['./../../dist/astro/'],
+        targets: ['../../dist/astro'],
       }),
       copy({
         targets: [
@@ -116,14 +116,14 @@ export default [
           },
           {
             src: 'src/**/**/*.json',
-            dest: '../../dist/astro/',
+            dest: '../../dist/astro',
             rename: (name, extension, fullPath) => {
               return removeSrcPath(fullPath);
             },
           },
           {
             src: ['src/**/**/**/**/*.template', 'src/**/**/**/**/.*.template'],
-            dest: '../../dist/astro/',
+            dest: '../../dist/astro',
             rename: (name, extension, fullPath) => {
               return removeSrcPath(fullPath);
             },

@@ -16,6 +16,46 @@
       "aliases": [
         "aba"
       ]
+    },
+    "new": {
+      "description": "This schematic create a new schematic library",
+      "factory": "./builder-generate/new/new.factory#newFactory",
+      "schema": "./builder-generate/new/schema.json"
+    },
+    "schematics-library-bundler": {
+      "description": "Integrate a bundler to compile a schematic library",
+      "factory": "./builder-generate/schematics-library-bundler/schematics-library-bundler.factory#schematicsLibraryBundler",
+      "schema": "./builder-generate/schematics-library-bundler/schema.json",
+      "aliases": [
+        "slb"
+      ],
+      "hidden": true
+    },
+    "prettier": {
+      "description": "Install and configure prettier",
+      "factory": "./builder-generate/prettier/prettier.factory#prettierFactory",
+      "schema": "./builder-generate/prettier/schema.json",
+      "aliases": [
+        "p"
+      ],
+      "hidden": true
+    },
+    "git-hooks": {
+      "description": "Install and configure prettier",
+      "factory": "./builder-generate/git-hooks/git-hooks.factory#gitHooksFactory",
+      "aliases": [
+        "gh"
+      ],
+      "hidden": true
+    },
+    "add-utils": {
+      "description": "Add utilities files to the project",
+      "factory": "./builder-generate/add-utils/add-utils.factory#addUtilsFactory",
+      "schema": "./builder-generate/add-utils/schema.json",
+      "aliases": [
+        "au"
+      ],
+      "hidden": true
     }
   }
 }

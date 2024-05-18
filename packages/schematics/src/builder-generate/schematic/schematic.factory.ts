@@ -32,6 +32,8 @@ export function schematicFactory({
   title?: string;
 }): Rule {
   return (tree: Tree) => {
+    const collectionPath = `/${collectionRoot ?? 'src'}/collection.json`;
+    logger.silly('collectionPath', [collectionPath]);
     return chain([
       addSchematicFiles(name, title, skipSchema, collectionRoot, schematicsFolder),
       createFilesFolder(name, collectionRoot, schematicsFolder),
@@ -83,10 +85,14 @@ function modifyCollection(
   skipSchema: boolean,
 ) {
   const collectionPath = `/${collectionRoot ?? 'src'}/collection.json`;
+  logger.silly('collectionPath', [collectionPath]);
   if (!tree.exists(collectionPath)) {
     logger.error(`We doesn't find the collection.json`);
     process.exit(1);
   }
+
+  // logger.silly('collectionPath', [collectionPath]);
+
   const collection: SchematicCollection = JSON.parse(
     tree.read(collectionPath)?.toString('utf-8'),
   ) as SchematicCollection;
