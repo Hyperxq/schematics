@@ -12,11 +12,15 @@ import {
   MergeStrategy,
   chain,
 } from '@angular-devkit/schematics';
-import { NodeDependencyType, addPackageJsonDependency } from '../../../../../utils';
+import { NodeDependencyType, addPackageJsonDependency, addScriptToPackageJson } from '../../../../../utils';
 
 export function addUtilsFactory() {
   return (tree: Tree) => {
-    return chain([addUtilsFiles(tree), addGeneralFiles()]);
+    return chain([
+      addUtilsFiles(tree),
+      addGeneralFiles(),
+      addScriptToPackageJson('generate-types', 'node generate-types.js'),
+    ] as Rule[]);
   };
 }
 
@@ -32,6 +36,7 @@ function addUtilsFiles(tree: Tree): Rule {
     'json-file.ts.template',
     'package-json.ts.template',
     'commands.ts.template',
+    'parse-name.ts.template',
   ];
   const template = apply(url('./files/utils'), [
     filter((path) => urlTemplates.some((template) => path.includes(template))),
@@ -75,10 +80,16 @@ function addUtilsDependencies(tree: Tree) {
     version: '4.1.3',
     overwrite: true,
   });
+  addPackageJsonDependency(tree, {
+    type: NodeDependencyType.Dev,
+    name: 'json-schema-to-typescript',
+    version: '^14.0.5',
+    overwrite: true,
+  });
 }
 
 function addGeneralFiles(): Rule {
-  const urlTemplates = ['.nvmrc.template', '.editorconfig.template'];
+  const urlTemplates = ['.nvmrc.template', '.editorconfig.template', 'generate-types.js.template'];
   const template = apply(url('./files'), [
     filter((path) => urlTemplates.some((urlTemplate) => path.includes(urlTemplate))),
     applyTemplates({

@@ -6,3 +6,4 @@ dist/
 commitlint.config.js
 rollup.config.js
 tsconfig.json
+generate-types.js
