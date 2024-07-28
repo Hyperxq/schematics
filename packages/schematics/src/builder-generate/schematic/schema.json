@@ -16,7 +16,12 @@
         "description": {
             "type": "string",
             "description": "A brief description of what the schematic does.",
-            "x-prompt": "Enter the description of the schematic?"
+            "x-prompt": "Enter the description of the schematic?",
+            "$default": {
+                "$source": "argv",
+                "index": 1
+            },
+            "default": "This is an empty schematic"
         },
         "skipSchema": {
             "type": "boolean",
