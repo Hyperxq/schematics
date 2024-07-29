@@ -14,7 +14,7 @@ import {
   strings,
   url,
 } from '@angular-devkit/schematics';
-import { NodeDependencyType, addPackageJsonDependency } from '../../../../../utils';
+import { NodeDependencyType, addPackageJsonDependency, addScriptToPackageJson } from '../../../../../utils';
 
 import * as fs from 'fs';
 import * as path from 'path';
@@ -106,6 +106,7 @@ function addSmDependency() {
       version: version,
       overwrite: true,
     });
+    return addScriptToPackageJson('new:schematic', 'builder g @pbuilder/sm sc');
   };
 }
 
