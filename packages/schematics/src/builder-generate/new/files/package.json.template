@@ -8,6 +8,7 @@
     "test": "npm run build && jasmine src/**/*_spec.js",
     "prepare": "husky install",
     "format": "prettier --write .",
+    "info": "builder info ./src/collection.json",
     "build:watch": "rollup -c --bundleConfigAsCjs --watch",
     "publish": "npm run build && cd dist && npm publish --access=public",
     "publish:verdaccio": "npm run build && cd dist && npm publish --registry http://localhost:4873"
