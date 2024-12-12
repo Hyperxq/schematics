@@ -11,10 +11,13 @@
     "info": "builder info ./src/collection.json",
     "build:watch": "rollup -c --bundleConfigAsCjs --watch",
     "publish": "npm run build && cd dist && npm publish --access=public",
-    "publish:verdaccio": "npm run build && cd dist && npm publish --registry http://localhost:4873"
+    "publish:verdaccio": "npm run build && cd dist && npm publish --registry http://localhost:4873",
+    "new:schematic": "builder g @pbuilder/sm sc",
+    "info": "builder info ./src/collection.json"
   },
   "keywords": [
-    "schematics"
+    "schematics",
+    "project-builder"
   ],
   "license": "MIT",
   "schematics": "./collection.json",
